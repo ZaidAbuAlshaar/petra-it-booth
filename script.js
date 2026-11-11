@@ -171,6 +171,8 @@ function loadCurrent() {
   // الموسيقى تبدأ تخفت قبل ما يبلش الفيديو اللي فيه صوت
   updateAudio();
 
+  // أول فيديو (ما في فيديو قبله) ما بيحتاج انتظار الـ fade
+  const firstLoad = !player.getAttribute("src");
   player.classList.add("swap");
   clearTimeout(loadCurrent.t);
   loadCurrent.t = setTimeout(() => {
@@ -178,7 +180,7 @@ function loadCurrent() {
     applyVideoAudio();
     player.load();
     playVideo();
-  }, 300);
+  }, firstLoad ? 0 : 300);
 }
 
 function applyVideoAudio() {
@@ -493,16 +495,23 @@ renderCategories();
 renderAudioButtons();
 probeAutoplay();
 
+/* الشاشة الافتتاحية: أول فيديو بيبلش يتحمّل من ورا الشعار فوراً،
+   والشعار بيختفي أول ما يجهز الفيديو (بعد 1.2 ثانية على الأقل، و3 ثواني كحد أقصى) */
+const INTRO_MIN_MS = 1200, INTRO_MAX_MS = 3000;
+const introStart = performance.now();
 let introDone = false;
 function endIntro() {
   if (introDone) return;
   introDone = true;
   $("intro").classList.add("hide");
-  setTimeout(() => $("intro").remove(), 900);
-  selectCategory("all");
+  setTimeout(() => $("intro").remove(), 600);
 }
+player.addEventListener("playing", () => {
+  setTimeout(endIntro, Math.max(0, INTRO_MIN_MS - (performance.now() - introStart)));
+}, { once: true });
 $("intro").addEventListener("click", endIntro);
-setTimeout(endIntro, 3000);
+setTimeout(endIntro, INTRO_MAX_MS);
+selectCategory("all");
 
 /* ---------------- منع إطفاء الشاشة ---------------- */
 let wakeLock = null;
