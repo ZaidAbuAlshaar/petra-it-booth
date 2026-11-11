@@ -17,14 +17,20 @@
 ## التشغيل على أي لابتوب (بدون إنترنت)
 
 1. نزّلوا ملف `petra_it_booth.zip` من الرابط فوق.
-2. **فكّوا الضغط أولاً** (كليك يمين ← Extract All). التشغيل من داخل الـ zip مباشرة ما بيشتغل.
-3. **Windows:** دبل كليك على `START_BOOTH.bat` ← بيفتح العرض بملء الشاشة والصوت شغال لحاله.
-   - `START_BOOTH_KIOSK.bat` = نسخة مقفولة للزوار (الخروج بـ Alt+F4 فقط).
-   - للخروج من العادي: F11 أو Alt+F4.
-4. **Mac:** دبل كليك على `START_BOOTH_MAC.command`. إذا macOS منعه: System Settings ← Privacy & Security ← Open Anyway.
-5. أو افتحوا `index.html` بأي متصفح، واضغطوا مرة على الشاشة لتفعيل الصوت.
+2. **فكّوا الضغط أولاً**: كليك يمين على الملف ← Extract All.
+3. افتحوا المجلد ودبل كليك على **«تشغيل العرض»** ← بيفتح العرض بملء الشاشة والصوت شغال لحاله.
+   - على Mac: **«تشغيل العرض - Mac»** (إذا macOS منعه: System Settings ← Privacy & Security ← Open Anyway).
+   - للخروج: Alt+F4.
 
-الأفضل Google Chrome أو Microsoft Edge (على Safari بتضغطوا مرة لتفعيل الصوت). كل شي محلي (الخط والموسيقى والفيديوهات)، فقط قسم Live Cyber Threat Map وتزامن الساعة بدهم إنترنت.
+```
+petra_it_booth/
+├── تشغيل العرض.bat           ← هاد اللي بتكبسوا عليه
+├── تشغيل العرض - Mac.command
+├── اقرأني.txt
+└── app/                      ← الفيديوهات والموسيقى والكود
+```
+
+بيحتاج Google Chrome أو Microsoft Edge (موجود على أي Windows). ما بيحتاج إنترنت، إلا قسم Live Cyber Threat Map وتزامن الساعة.
 
 ## كيف بتشتغل الموسيقى
 
@@ -48,4 +54,4 @@
 
 ---
 
-**English:** Booth display for the Faculty of IT, University of Petra. Open the [live version](https://zaidabualshaar.github.io/petra-it-booth/) or [download the zip](https://github.com/ZaidAbuAlshaar/petra-it-booth/releases/latest/download/petra_it_booth.zip), extract it, and run `START_BOOTH.bat` (Windows) or `START_BOOTH_MAC.command` (macOS). Background music pauses automatically while a video with its own audio plays and resumes afterwards.
+**English:** Booth display for the Faculty of IT, University of Petra. Open the [live version](https://zaidabualshaar.github.io/petra-it-booth/) or [download the zip](https://github.com/ZaidAbuAlshaar/petra-it-booth/releases/latest/download/petra_it_booth.zip), extract it, and double-click «تشغيل العرض» (Windows) or «تشغيل العرض - Mac» (macOS). Background music pauses automatically while a video with its own audio plays and resumes afterwards.
